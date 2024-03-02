@@ -1,0 +1,96 @@
+﻿@model List<Todo>
+
+<h2>Task List</h2>
+
+@if (Model != null && Model.Any()) 
+{
+    <table class="table">
+        <tr>
+            <th>Important / Urgent</th>
+            <th>Important / Not Urgent</th>
+        </tr>
+        <tr>
+            <td>
+
+                @foreach (var task in Model.Where(t => t.Quadrant == "Quadrant1"))
+                {
+                    <div>
+                        @task.Task
+                        Due: @task.DueDate
+                        <form method="post" action="@Url.Action("CompletionStatus", "Home")">
+                            <input type="hidden" name="taskId" value="@task.TaskId" />
+                            <button type="submit" class="btn btn-success">✔</button>
+                        </form>
+
+                        <a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@task.TaskId">✎</a>
+                        <a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@task.TaskId">🗑</a>
+                    </div>
+                }
+            </td>
+            <td>
+
+                @foreach (var task in Model.Where(t => t.Quadrant == "Quadrant2"))
+                {
+                    <div>
+                        @task.Task
+                        Due: @task.DueDate
+
+                        <form method="post" action="@Url.Action("CompletionStatus", "Home")">
+                            <input type="hidden" name="taskId" value="@task.TaskId" />
+                            <button type="submit" class="btn btn-success">✔</button>
+                        </form>
+
+                        <a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@task.TaskId">✎</a>
+                        <a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@task.TaskId">🗑</a>
+                    </div>
+                }
+            </td>
+        </tr>
+        <tr>
+            <th>Not Important / Urgent</th>
+            <th>Not Important / Not Urgent</th>
+        </tr>
+        <tr>
+            <td>
+
+                @foreach (var task in Model.Where(t => t.Quadrant == "Quadrant3"))
+                {
+                    <div>
+                        @task.Task
+                        Due: @task.DueDate
+
+                        <form method="post" action="@Url.Action("CompletionStatus", "Home")">
+                            <input type="hidden" name="taskId" value="@task.TaskId" />
+                            <button type="submit" class="btn btn-success">✔</button>
+                        </form>
+
+                        <a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@task.TaskId">✎</a>
+                        <a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@task.TaskId">🗑</a>
+                    </div>
+                }
+            </td>
+            <td>
+
+                @foreach (var task in Model.Where(t => t.Quadrant == "Quadrant4"))
+                {
+                    <div>
+                        @task.Task
+                        Due: @task.DueDate
+
+                        <form method="post" action="@Url.Action("CompletionStatus", "Home")">
+                            <input type="hidden" name="taskId" value="@task.TaskId" />
+                            <button type="submit" class="btn btn-success">✔</button>
+                        </form>
+
+                        <a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@task.TaskId">✎</a>
+                        <a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@task.TaskId">🗑</a>
+                    </div>
+                }
+            </td>
+        </tr>
+    </table>
+}
+else
+{
+    <p>No tasks to display.</p>
+}

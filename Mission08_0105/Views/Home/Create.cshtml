@@ -1,0 +1,51 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model Todo
+
+<body>
+    <form method="post">
+        <input type="hidden" asp-for="TaskId" />
+        <input type="hidden" asp-for="Completed" value="0" />
+        @* Task *@
+        <div>
+            <label asp-for="Task">Task:</label>
+            <input asp-for="Task" />
+        </div>
+        <br />
+        @* Date *@
+        <div>
+            <label asp-for="DueDate">Due Date:</label>
+            <input asp-for="DueDate" type="datetime-local" />
+        </div>
+        <br />
+        @* Quadrant *@
+        <div>
+            <label asp-for="Quadrant">Quadrant:</label>
+            <select asp-for="Quadrant" required>
+                <option value="Quadrant1">Urgent/Important</option>
+                <option value="Quadrant2">Not Urgent/Important</option>
+                <option value="Quadrant3">Urgent/Not Important</option>
+                <option value="Quadrant4">Not Urgent/Not Important</option>
+            </select><br><br>
+        </div>
+        <br />
+        <div>
+            @* category *@
+            <label asp-for="CategoryId">Category:</label>
+            <select asp-for="CategoryId">
+                <option value="1">Home</option>
+                <option value="2">School</option>
+                <option value="3">Work</option>
+                <option value="4">Church</option>
+            </select>
+        </div>
+        <br />
+        <div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</body>

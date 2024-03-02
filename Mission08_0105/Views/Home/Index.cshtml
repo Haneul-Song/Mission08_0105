@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model Todo
+
+<div class="container text-center">
+    <h1>Task Manager Application!</h1>
+
+    <p>This app makes organizing your tasks simple by helping you prioritize what's really important. It's all about focusing on the right things.</p>
+
+    <img src="@Url.Content("~/img/matrix.jpg")" alt="Stephen Covey's Matrix" class="img-responsive" />
+
+    <h3>How to use the matrix:</h3>
+</div>
+<div style="margin-left: auto; margin-right: auto; max-width: 60%;">
+    <ul class="list-unstyled">
+        <li><strong>Q1:</strong> Important and urgent</li>
+        <li><strong>Q2:</strong> Important but not urgent</li>
+        <li><strong>Q3:</strong> Urgent but not important</li>
+        <li><strong>Q4:</strong> neither urgent nor important</li>
+    </ul>
+</div>
+
+<div class="container text-center">
+    <h3>Let's Start!</h3>
+    <a asp-controller="Home" asp-action="Create" class="btn btn-success">Create Task</a>
+</div>
